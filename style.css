@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.roboto-font {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "wdth" 50;
+}
+
+body {
+    background-color: antiquewhite;
+    display: flex;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-family: "Roboto";
+    font-weight: 400;
+    font-size: 50px;
+    margin-top: 40px;
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    border: none;
+    opacity: 0.6;
+    margin-top: 10px;
+    color: aliceblue;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 900;
+    background-color: black;
+}
+
+button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
