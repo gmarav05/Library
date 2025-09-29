@@ -6,9 +6,10 @@
 .roboto-font {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
-  font-weight: normal;
+  font-weight: medium;
   font-style: normal;
-  font-variation-settings: "wdth" 50;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 body {
@@ -24,7 +25,7 @@ body {
 }
 
 h1 {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 50px;
     margin-top: 40px;
@@ -40,11 +41,99 @@ button {
     border-radius: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-weight: 900;
+    font-weight: 600;
     background-color: black;
+    transition: 0.3s;
 }
 
 button:hover {
     opacity: 1;
     cursor: pointer;
+}
+/* 
+dialog {
+
+    display: flex;
+    margin: auto;
+    height: 300px;
+    width: 250px;
+    padding: 20px;
+
+} */
+
+dialog {
+    display: flex;
+    margin: auto;
+    height: 360px;
+    width: 300px;
+    padding: 16px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out,
+    display 0.5s allow-discrete;
+    background-color: bisque;
+    border-radius: 10px;
+}
+
+
+dialog:open {
+  transform: translateY(0);
+  opacity: 1;
+  display: flex;
+  border: none;
+}
+
+::backdrop {
+  background-color: #222222;
+  opacity: 0.75;
+  backdrop-filter: blur(2px);
+}
+
+dialog > #close{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    position: fixed;
+    margin-left: 260px;
+    padding: 0.25rem;
+    margin-top: 2px;
+   
+}
+
+form, form div {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 0.8rem;   
+}
+
+form div {
+    gap: 0.5rem;
+}
+
+form h3 {
+   font-family: "Roboto";
+   font-weight: medium;
+}
+
+form label {
+    font-family: "Roboto";
+    font-weight: 450;
+}
+
+form input {
+    border: none;
+    border-radius: 4px;
+    height: 12px;
+    padding: 8px;
+    font-family: "Raleway", sans-serif;
+}
+
+form #read {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
 }

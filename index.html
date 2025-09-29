@@ -4,22 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+   
 </head>
 
 <body>
 
     <div class="container">
+        
         <h1>Library</h1>
-        <button>New Book</button>
+        <button id="showDialog">New Book</button>
+
+        <dialog id="favDialog">
+            <button autofocus id="close">X</button>
+
+            <form>
+
+                <h3>New Book</h3>
+
+
+                    <div>
+                        <label for="bookName">Book name</label>
+                        <input type="text" id="bookName" name="bookName" placeholder=" Sapiens" required>
+                    </div>
+                   
+
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" required placeholder=" Yuva Harari">
+                        
+                    </div>
+                    
+
+                    <div>
+                        <label for="pages">Pages</label>
+                        <input type="tel" id="pages" name="pages" required placeholder=" 501"> 
+                        
+                    </div>
+
+                    <div>  
+                        <label for="read">Read</label>
+                        <input type="checkbox" id="read" name="read">
+                    </div>
+                   
+                    
+                    <button type="submit">Create</button>
+            </form>
+           
+        </dialog>
+
+        <output></output>
+       
+
     </div>
+
 
     
 
@@ -27,5 +68,6 @@
 
     
 </body>
+ <script src="app.js"></script>
 
 </html>
