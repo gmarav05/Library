@@ -14,17 +14,15 @@
 <body>
 
     <div class="container">
-        
         <h1>Library</h1>
         <button id="showDialog">New Book</button>
+    </div>
 
-        <dialog id="favDialog">
+    <dialog id="favDialog">
             <button autofocus id="close">X</button>
-
-            <form>
-
+            
+            <form id="form">
                 <h3>New Book</h3>
-
 
                     <div>
                         <label for="bookName">Book name</label>
@@ -41,7 +39,7 @@
 
                     <div>
                         <label for="pages">Pages</label>
-                        <input type="tel" id="pages" name="pages" required placeholder=" 501"> 
+                        <input type="tel" id="pages" name="pages" required placeholder=" 102"> 
                         
                     </div>
 
@@ -50,20 +48,27 @@
                         <input type="checkbox" id="read" name="read">
                     </div>
                    
-                    
-                    <button type="submit">Create</button>
+                    <button type="submit" id="addBookBtn">Create</button>
             </form>
            
-        </dialog>
-
-        <output></output>
-       
-
-    </div>
+    </dialog>
+        
 
 
-    
 
+    <template id="template-card">
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Hello</h3>
+            </div>
+
+        </div>
+
+    </template>
+
+   
 
 
     
