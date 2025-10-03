@@ -39,7 +39,7 @@
 
                     <div>
                         <label for="pages">Pages</label>
-                        <input type="tel" id="pages" name="pages" required placeholder=" 102"> 
+                        <input type="number" id="pages" name="pages" required placeholder=" 102"> 
                         
                     </div>
 
@@ -48,7 +48,7 @@
                         <input type="checkbox" id="read" name="read">
                     </div>
                    
-                    <button type="submit" id="addBookBtn">Create</button>
+                    <button id="addBookBtn">Create</button>
             </form>
            
     </dialog>
@@ -56,19 +56,21 @@
 
 
 
-    <template id="template-card">
+    <!-- <template id="template-card"> -->
 
-        <div class="cards">
+        <div class="cards" id="cardsContainer">
 
-            <div class="card">
+            <!-- <div class="card">
                 <h3>Hello</h3>
-            </div>
+            </div> -->
 
         </div>
 
-    </template>
+    <!-- </template>  -->
 
-   
+    <!-- ...existing code...
+<div class="cards" id="cardsContainer"></div>
+    -->
 
 
     

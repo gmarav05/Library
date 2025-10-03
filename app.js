@@ -1,6 +1,10 @@
 const dialog = document.querySelector("dialog");
 const showButton = document.getElementById("showDialog");
 const closeButton = document.getElementById("close");
+const addBookBtn = document.getElementById("addBookBtn");
+const cardsContainer = document.getElementById("cardsContainer");
+const form = document.getElementById("form");
+
 
 // show modal 
 
@@ -12,27 +16,21 @@ showButton.addEventListener("click" , () => {
 
 closeButton.addEventListener("click" , () => {
     dialog.close();
-
-    outputBox.value = dialog.returnValue === "default"
-      ? "No return value."
-      :`ReturnValue:
-      ${dialog.returnValue}.`;
 });
 
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
-
-    this.id = crypto.randomUUID(),
-    this.title = title,
+    this.bookId = crypto.randomUUID(),
+    this.bookTitle = title,
     this.author = author,
     this.pages = pages,
     this.read = read;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);   
+function addBookToLibrary(book) {
+    myLibrary.push(book);   
+    displayBooks();
 }
 
 Book.prototype.setRead = function () {
@@ -43,46 +41,76 @@ addBookBtn.addEventListener('click', (event) => {
     event.preventDefault();
 
     const newBook = new Book(
-        3, 
         document.getElementById("bookName").value,
         document.getElementById("author").value,
         document.getElementById("pages").value,
-        document.getElementById("read").value
+        document.getElementById("read").checked
     );
 
     console.log(newBook);
+    addBookToLibrary(newBook);
+    // displayBooks(newBook);
+    dialog.close();
+    form.reset();
     
 })
 
+function displayBooks() {
+    cardsContainer.innerHTML = "";
+    
+    myLibrary.forEach((book) => {
+
+        const bookCard = document.createElement('div');
+
+        bookCard.classList.add('card');
+
+        bookCard.setAttribute('data-id', book.bookId);
+
+        const bookName = document.createElement('h3');
+        bookName.textContent = `${book.bookTitle}`;
+
+        const author = document.createElement('p');
+        author.textContent = `Author: ${book.author}`;
+
+        const pages = document.createElement('p');
+        pages.textContent = `Pages: ${book.pages}`;
+
+        const status = document.createElement('p');
+        status.textContent = `Status: ${book.read ? "Read" : "Not Read"}`;
 
 
+        const readButton = document.createElement("button");
+        readButton.classList.add("read-button");
+        readButton.textContent = 'Set Read';
+        readButton.addEventListener('click', function() {
+            book.setRead();
+            displayBooks();
+        });
 
-
-
-
-
-
-
-
-
-
-
-const displayBooks = () => {
-    card.innerHTML = "";
-
-    for (let i = 0; i < myLibrary.length; i++) {
-        const addCard = document.createElement("div");
-        const book = myLibrary[i];
-        addCard.classList.add("book");
-        const deleteCard = document.createElement("button");
-        deleteCard.innerText = "\u00D7";
-        deleteCard.addEventListener('click', () => {
-            if (window.confirm("Sure you want to delete this card?")) {
-                myLibrary.splice(i,1);
+        const removeButton = document.createElement("button");
+        removeButton.classList.add("remove-button");
+        removeButton.textContent = 'Remove Book';
+        removeButton.addEventListener('click', function() {
+            const index = myLibrary.findIndex(b => b.bookId === book.bookId);
+            if (index !== -1) {
+                myLibrary.splice(index,1);
                 displayBooks();
             }
-        })
-        
-    }
+        });
 
+        bookCard.appendChild(bookName);
+        bookCard.appendChild(author);
+        bookCard.appendChild(pages);
+        bookCard.appendChild(status);
+        bookCard.appendChild(readButton);
+        bookCard.appendChild(removeButton);
+
+        
+        cardsContainer.appendChild(bookCard);
+
+    });
+    
 }
+
+
+addBookToLibrary(new Book('arav', 'Intro to JS', 150, read));
